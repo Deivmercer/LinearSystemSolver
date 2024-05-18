@@ -1,10 +1,11 @@
 #include <iostream>
+#include "types.h"
 #include "GaussSeidel.h"
 
 int main()
 {
     // Parsing the MatrixMarket file
-    GaussSeidel::Matrix matrix;
+    Matrix matrix;
     Eigen::loadMarket(matrix, "../sample-mtx/spa1.mtx");
 
     // Initializing the initial guess

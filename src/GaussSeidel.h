@@ -5,12 +5,11 @@
 #ifndef GAUSS_SEIDEL_GAUSSSEIDEL_H
 #define GAUSS_SEIDEL_GAUSSSEIDEL_H
 
+#include "types.h"
 #include "libs/unsupported/Eigen/SparseExtra"
 
 namespace GaussSeidel
 {
-    typedef Eigen::SparseMatrix<float> Matrix;
-
     struct Result
     {
         Eigen::VectorXf x;
@@ -23,9 +22,9 @@ namespace GaussSeidel
 
     Result getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk);
 
-    Result solve(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const float tolerance);
+    Result solve(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, float tolerance);
 
-    bool thresholdReached(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const float tolerance);
+    bool thresholdReached(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, float tolerance);
 
     const int MAX_ITERATIONS = 1000;
 }
