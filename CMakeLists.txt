@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
         src/GaussSeidel.cpp
         src/GaussSeidel.h
-        src/types.h)
+        src/types.h
+        src/Utils.cpp
+        src/Utils.h)
