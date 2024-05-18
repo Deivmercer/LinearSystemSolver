@@ -6,7 +6,6 @@
 #define GAUSS_SEIDEL_GAUSSSEIDEL_H
 
 #include "types.h"
-#include "libs/unsupported/Eigen/SparseExtra"
 
 namespace GaussSeidel
 {
@@ -16,9 +15,9 @@ namespace GaussSeidel
         Eigen::VectorXf residual;
     };
 
-    Matrix getP(const Matrix& matrix);
+    Matrix getLowerMatrix(const Matrix& matrix);
 
-    Matrix getN(const Matrix& matrix);
+    Matrix getUpperMatrix(const Matrix& matrix);
 
     Result getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk);
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "types.h"
 #include "GaussSeidel.h"
+#include "libs/unsupported/Eigen/SparseExtra"
 
 int main()
 {
@@ -19,7 +20,6 @@ int main()
     b.setOnes();
 
     GaussSeidel::Result r = GaussSeidel::solve(matrix, b, x0, 0.1f);
-
     std::cout << r.x.transpose() << std::endl;
     std::cout << r.residual.transpose() << std::endl;
 

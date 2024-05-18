@@ -3,33 +3,31 @@
 //
 
 #include "GaussSeidel.h"
+#include "BackwardSubstitution.h"
 
 namespace GaussSeidel
 {
-    Matrix getP(const Matrix& matrix)
+    Matrix getLowerMatrix(const Matrix& matrix)
     {
         return matrix.triangularView<Eigen::Lower>();
     }
 
-    Matrix getN(const Matrix& matrix)
+    Matrix getUpperMatrix(const Matrix& matrix)
     {
-        Matrix N(matrix.triangularView<Eigen::Upper>());
-        N *= -1;
-        // TODO: rimuovere da N i valori sulla diagonale
-
-        return N;
+        return matrix.triangularView<Eigen::Upper | Eigen::ZeroDiag>() * -1;
     }
 
     Result getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk)
     {
         // TODO: controllare teorema 4.3
+        // Extracting the upper and lower triangular components
 
-        Matrix P = GaussSeidel::getP(A);
-        Matrix N = GaussSeidel::getN(A);
+        Matrix P = GaussSeidel::getLowerMatrix(A);
+        Matrix N = GaussSeidel::getUpperMatrix(A);
 
         Eigen::VectorXf r = b - (A * xk);
-        // TODO: y = P.inverse() * rk
-        Eigen::VectorXf nextXk = xk; // + y
+        Eigen::VectorXf y = BackwardSubstitution::solve(P, r);
+        Eigen::VectorXf nextXk = xk + y;
 
         return {nextXk, r};
     }
