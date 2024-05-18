@@ -5,7 +5,7 @@ int main()
 {
     // Parsing the MatrixMarket file
     GaussSeidel::Matrix matrix;
-    Eigen::loadMarket(matrix, "../matrici/spa1.mtx");
+    Eigen::loadMarket(matrix, "../sample-mtx/spa1.mtx");
 
     // Initializing the initial guess
     Eigen::VectorXf x0;
