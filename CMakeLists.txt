@@ -8,4 +8,6 @@ add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
         src/GaussSeidel.h
         src/types.h
         src/Utils.cpp
-        src/Utils.h)
+        src/Utils.h
+        src/BackwardSubstitution.cpp
+        src/BackwardSubstitution.h)
