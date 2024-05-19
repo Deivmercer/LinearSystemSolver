@@ -10,4 +10,6 @@ add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
         src/Utils.cpp
         src/Utils.h
         src/BackwardSubstitution.cpp
-        src/BackwardSubstitution.h)
+        src/BackwardSubstitution.h
+        src/Jacobi.h
+        src/Jacobi.cpp)
