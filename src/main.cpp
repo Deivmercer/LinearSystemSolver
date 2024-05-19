@@ -19,9 +19,7 @@ int main()
     b.resize(matrix.cols());
     b.setOnes();
 
-    GaussSeidel::Result r = GaussSeidel::solve(matrix, b, x0, 0.1f);
-    std::cout << r.x.transpose() << std::endl;
-    std::cout << r.residual.transpose() << std::endl;
+    GaussSeidel::Result r = GaussSeidel::solve(matrix, b, x0, 0.001f);
 
     return 0;
 }

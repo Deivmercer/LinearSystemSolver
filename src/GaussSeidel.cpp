@@ -5,6 +5,10 @@
 #include "GaussSeidel.h"
 #include "BackwardSubstitution.h"
 
+#ifndef NDEBUG
+#include <iostream>
+#endif
+
 namespace GaussSeidel
 {
     Matrix getLowerMatrix(const Matrix& matrix)
@@ -40,6 +44,13 @@ namespace GaussSeidel
         while (i < MAX_ITERATIONS && !thresholdReached(A, b, r.x, tolerance))
         {
             r = getNextXk(A, b, r.x);
+
+#ifndef NDEBUG
+            std::cout << "[GaussSeidel::solve] Iteration: " << i + 1 << std::endl;
+            std::cout << "[GaussSeidel::solve] x: " << r.x.transpose() << std::endl;
+            std::cout << "[GaussSeidel::solve] residual: " << r.residual.transpose() << std::endl << std::endl;
+#endif
+
             ++i;
         }
 

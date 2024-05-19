@@ -4,6 +4,10 @@
 
 #include "BackwardSubstitution.h"
 
+#ifndef NDEBUG
+#include <iostream>
+#endif
+
 namespace BackwardSubstitution
 {
     Eigen::VectorXf solve(const Matrix& U, const Eigen::VectorXf& b)
@@ -20,6 +24,10 @@ namespace BackwardSubstitution
             assert(U.coeff(i, i) != 0);
             x.coeffRef(i) = (b.coeff(i) - (U.row(i) * x)) / U.coeff(i, i);
         }
+
+#ifndef NDEBUG
+        std::cout << "[BackwardSubstitution::solve] x: " << x.transpose() << std::endl << std::endl;
+#endif
 
         return x;
     }
