@@ -19,7 +19,7 @@ namespace BackwardSubstitution
         assert(U.coeff(n, n) != 0);
         x.coeffRef(n) = b.coeff(n) / U.coeff(n, n);
 
-        for (Eigen::Index i = n - 1; i > 0; --i)
+        for (Eigen::Index i = n - 1; i > -1; --i)
         {
             assert(U.coeff(i, i) != 0);
             x.coeffRef(i) = (b.coeff(i) - (U.row(i) * x)) / U.coeff(i, i);
