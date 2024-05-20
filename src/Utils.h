@@ -16,6 +16,8 @@ namespace Utils
     bool checkDiagonalZero(Matrix& matrix);
 
     Eigen::VectorXf invertDiagonal(Matrix& matrix);
+
+    bool thresholdReached(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const float tolerance);
 }
 
 #endif //METODI_DEL_CALCOLO_SCIENTIFICO_1_BIS_UTILS_H

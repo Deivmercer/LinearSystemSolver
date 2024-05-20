@@ -1,6 +1,7 @@
 #include <iostream>
 #include "types.h"
 #include "GaussSeidel.h"
+#include "Jacobi.h"
 #include "libs/unsupported/Eigen/SparseExtra"
 #include "Utils.h"
 
@@ -23,7 +24,8 @@ int main()
     b.resize(matrix.cols());
     b.setOnes();
 
-    GaussSeidel::Result r = GaussSeidel::solve(matrix, b, x0, 0.001f);
+    //GaussSeidel::Result r = GaussSeidel::solve(matrix, b, x0, 0.001f);
+    Jacobi::Result r = Jacobi::solve(matrix, b, x0, 0.001f);
 
     return 0;
 }

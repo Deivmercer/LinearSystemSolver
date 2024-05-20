@@ -4,6 +4,7 @@
 
 #include "GaussSeidel.h"
 #include "BackwardSubstitution.h"
+#include "Utils.h"
 
 #ifndef NDEBUG
 #include <iostream>
@@ -41,7 +42,7 @@ namespace GaussSeidel
         int i = 0;
         Result r = {xk, xk};
 
-        while (i < MAX_ITERATIONS && !thresholdReached(A, b, r.x, tolerance))
+        while (i < MAX_ITERATIONS && !Utils::thresholdReached(A, b, r.x, tolerance))
         {
             r = getNextXk(A, b, r.x);
 
@@ -55,14 +56,5 @@ namespace GaussSeidel
         }
 
         return r;
-    }
-
-    bool thresholdReached(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const float tolerance)
-    {
-        // ||b - Axk|| / ||b|| < tol
-        Eigen::VectorXf axk = A * xk;
-        Eigen::VectorXf normDistance = b - axk;
-
-        return (normDistance.squaredNorm() / b.squaredNorm()) < tolerance;
     }
 }

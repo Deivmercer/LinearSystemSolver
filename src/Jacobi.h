@@ -7,10 +7,8 @@ namespace Jacobi
 {
     struct Result
     {
-        Eigen::VectorXf xk;
+        Eigen::VectorXf x;
         Eigen::VectorXf residual;
-        int numIter;
-        float residualNorm;
     };
 
     /*

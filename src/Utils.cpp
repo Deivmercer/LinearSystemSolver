@@ -37,7 +37,7 @@ namespace Utils
         {
             if (matrix.coeff(index, index) == 0)
             {
-                throw std::invalid_argument("Found zero at:" << std::endl << "row = " << index << std::endl << " - column = " << index);
+                throw std::invalid_argument("Found zero at position " + index);
             }
         }
         return false;
@@ -52,10 +52,19 @@ namespace Utils
         {
             if (matrix.coeff(index, index) == 0)
             {
-                throw std::invalid_argument("Found zero at:" << std::endl << "row = " << index << std::endl << " - column = " << index);
+                throw std::invalid_argument("Found zero at position " + index);
             }
             diag[index] = 1 / matrix.coeff(index, index);
         }
         return diag;
+    }
+
+    bool thresholdReached(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const float tolerance)
+    {
+        // ||b - Axk|| / ||b|| < tol
+        Eigen::VectorXf axk = A * xk;
+        Eigen::VectorXf normDistance = b - axk;
+
+        return (normDistance.squaredNorm() / b.squaredNorm()) < tolerance;
     }
 }
