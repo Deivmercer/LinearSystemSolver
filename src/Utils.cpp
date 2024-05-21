@@ -37,22 +37,27 @@ namespace Utils
         {
             if (matrix.coeff(index, index) == 0)
             {
-                throw std::invalid_argument("Found zero at position " + index);
+                std::stringstream stream;
+                stream << "Found zero at position " << index << std::endl;
+                throw std::invalid_argument(stream.str());
             }
         }
         return false;
     }
 
-    Eigen::VectorXf invertDiagonal(Matrix& matrix)
+    Eigen::VectorXf invertDiagonal(const Matrix& matrix)
     {
         Eigen::VectorXf diag;
+        diag.resize(matrix.rows());
 
         // check diagonal
         for (int index = 0; index < matrix.rows(); index++)
         {
             if (matrix.coeff(index, index) == 0)
             {
-                throw std::invalid_argument("Found zero at position " + index);
+                std::stringstream stream;
+                stream << "Found zero at position " << index << std::endl;
+                throw std::invalid_argument(stream.str());
             }
             diag[index] = 1 / matrix.coeff(index, index);
         }

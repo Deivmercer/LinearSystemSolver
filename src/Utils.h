@@ -15,7 +15,7 @@ namespace Utils
 
     bool checkDiagonalZero(Matrix& matrix);
 
-    Eigen::VectorXf invertDiagonal(Matrix& matrix);
+    Eigen::VectorXf invertDiagonal(const Matrix& matrix);
 
     bool thresholdReached(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const float tolerance);
 }

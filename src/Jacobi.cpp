@@ -7,7 +7,7 @@
 
 namespace Jacobi
 {
-    Result getNextXk(Matrix &A, const Eigen::VectorXf &b, const Eigen::VectorXf &xk, Eigen::VectorXf invP)
+    Result getNextXk(const Matrix &A, const Eigen::VectorXf &b, const Eigen::VectorXf &xk, Eigen::VectorXf invP)
     {
         //x^(k+1) = x^k + P^(-1)(Ax^(k) - b)
         //rk = b − Ax^(k)
@@ -18,7 +18,7 @@ namespace Jacobi
         return {nextXk, residual};
     }
 
-    Result solve(Matrix &A, const Eigen::VectorXf &b, const Eigen::VectorXf &xk, const float tolerance)
+    Result solve(const Matrix &A, const Eigen::VectorXf &b, const Eigen::VectorXf &xk, const float tolerance)
     {
         Result result = {xk, xk};
         Eigen::VectorXf invP = Utils::invertDiagonal(A);
@@ -34,9 +34,9 @@ namespace Jacobi
         }
 
 #ifndef NDEBUG
-        std::cout << "[GaussSeidel::solve] Iteration: " << i + 1 << std::endl;
-        std::cout << "[GaussSeidel::solve] x: " << result.x.transpose() << std::endl;
-        std::cout << "[GaussSeidel::solve] residual: " << result.residual.transpose() << std::endl << std::endl;
+        std::cout << "[Jacobi::solve] Iteration: " << i + 1 << std::endl;
+        std::cout << "[Jacobi::solve] x: " << result.x.transpose() << std::endl;
+        std::cout << "[Jacobi::solve] residual: " << result.residual.transpose() << std::endl << std::endl;
 #endif
 
         return result;
