@@ -12,4 +12,6 @@ add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
         src/BackwardSubstitution.cpp
         src/BackwardSubstitution.h
         src/Jacobi.h
-        src/Jacobi.cpp)
+        src/Jacobi.cpp
+        src/GradientMethod.cpp
+        src/GradientMethod.h)
