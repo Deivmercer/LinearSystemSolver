@@ -33,7 +33,8 @@ int main()
     std::cout << "[GradientMethod::solve] x: " << rgm.x.transpose() << std::endl;
     std::cout << "[GradientMethod::solve] residual: " << rgm.residual.transpose() << std::endl << std::endl;
 
-    Jacobi::Result r = Jacobi::solve(matrix, b, x0, 0.001f);
-
+    Jacobi::Result rjm = Jacobi::solve(matrix, b, x0, 0.001f);
+    std::cout << "[JacobiMethod::solve] x: " << rjm.x.transpose() << std::endl;
+    std::cout << "[JacobitMethod::solve] residual: " << rjm.residual.transpose() << std::endl << std::endl;
     return 0;
 }

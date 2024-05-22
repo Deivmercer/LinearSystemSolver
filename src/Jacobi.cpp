@@ -9,10 +9,11 @@ namespace Jacobi
 {
     Result getNextXk(const Matrix &A, const Eigen::VectorXf &b, const Eigen::VectorXf &xk, Eigen::VectorXf invP)
     {
+
         //x^(k+1) = x^k + P^(-1)(Ax^(k) - b)
         //rk = b − Ax^(k)
         Eigen::VectorXf residual = b - (A * xk);
-        Eigen::VectorXf rk = invP * residual;
+        Eigen::VectorXf rk = invP.asDiagonal() * residual;
         Eigen::VectorXf nextXk = xk + rk;
 
         return {nextXk, residual};
@@ -28,8 +29,6 @@ namespace Jacobi
         while (i < 10000 && !(Utils::thresholdReached(A, b, result.x, tolerance)))
         {
             result = getNextXk(A, b, result.x, invP);
-
-
             ++i;
         }
 

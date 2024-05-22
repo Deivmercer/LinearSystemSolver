@@ -61,6 +61,7 @@ namespace Utils
             }
             diag[index] = 1 / matrix.coeff(index, index);
         }
+
         return diag;
     }
 
