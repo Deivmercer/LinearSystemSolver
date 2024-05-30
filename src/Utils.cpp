@@ -69,8 +69,27 @@ namespace Utils
     {
         // ||b - Axk|| / ||b|| < tol
         Eigen::VectorXf axk = A * xk;
-        Eigen::VectorXf normDistance = b - axk;
 
-        return (normDistance.squaredNorm() / b.squaredNorm()) < tolerance;
+        return (euclideanNorm(b, axk) / euclideanNorm(b)) < tolerance;
+    }
+
+    float euclideanNorm(const Eigen::VectorXf& x) {
+
+        float sum = 0;
+        for (int i = 0; i < x.size(); ++i)
+            sum += x.coeff(i) * x.coeff(i);
+
+        return sqrt(sum);
+    }
+
+    float euclideanNorm(const Eigen::VectorXf& x, const Eigen::VectorXf& y) {
+
+        assert(x.size() == y.size());
+
+        float sum = 0;
+        for (int i = 0; i < x.size(); ++i)
+            sum += (x.coeff(i) - y.coeff(i)) * (x.coeff(i) - y.coeff(i));
+
+        return sqrt(sum);
     }
 }

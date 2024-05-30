@@ -18,6 +18,10 @@ namespace Utils
     Eigen::VectorXf invertDiagonal(const Matrix& matrix);
 
     bool thresholdReached(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const float tolerance);
+
+    float euclideanNorm(const Eigen::VectorXf& x);
+
+    float euclideanNorm(const Eigen::VectorXf& x, const Eigen::VectorXf& y);
 }
 
 #endif //METODI_DEL_CALCOLO_SCIENTIFICO_1_BIS_UTILS_H
