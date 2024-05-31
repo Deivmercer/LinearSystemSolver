@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-namespace GradientConjugateMethod
+namespace GradientConjugate
 {
     struct Result
     {
@@ -22,13 +22,15 @@ namespace GradientConjugateMethod
      * tolerance
      */
 
-    Result getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const Eigen::VectorXf& rk, const Eigen::VectorXf& dk);
-
     // chiamo questo per iniziare ed inizializzare rk e dk
     Result solve(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, float tolerance);
 
     // effettivo solver
     Result solve(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const Eigen::VectorXf& rk, const Eigen::VectorXf& dk, float tolerance);
+
+    Eigen::VectorXf getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const Eigen::VectorXf& rk, const Eigen::VectorXf& dk);
+
+    Eigen::VectorXf getNextDk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, const Eigen::VectorXf& rk, const Eigen::VectorXf& dk);
 
 };
 
