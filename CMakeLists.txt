@@ -16,4 +16,8 @@ add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
         src/GradientMethod.cpp
         src/GradientMethod.h
         "src/GradientConjugate.h"
-        src/GradientConjugate.cpp)
+        src/GradientConjugate.cpp
+        src/new/parent.cpp
+        src/new/parent.h
+        src/new/IterativeSolver.cpp
+        src/new/IterativeSolver.h)
