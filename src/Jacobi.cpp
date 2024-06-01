@@ -1,5 +1,5 @@
 #include "Jacobi.h"
-#include "Utils.h"
+#include "LinearSystemSolver/Utils.h"
 
 #ifndef NDEBUG
 #include <iostream>

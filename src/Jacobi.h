@@ -1,7 +1,7 @@
 #ifndef JACOBI_H
 #define JACOBI_H
 
-#include "types.h"
+#include "LinearSystemSolver/types.h"
 
 namespace Jacobi
 {

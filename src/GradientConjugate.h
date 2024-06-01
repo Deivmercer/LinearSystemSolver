@@ -1,7 +1,7 @@
 #ifndef GRADIENTCONJUGATE_H
 #define GRADIENTCONJUGATE_H
 
-#include "types.h"
+#include "LinearSystemSolver/types.h"
 
 namespace GradientConjugate
 {

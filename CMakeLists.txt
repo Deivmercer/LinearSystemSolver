@@ -4,20 +4,18 @@ project(Metodi_del_Calcolo_Scientifico_1_bis)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
-        src/GaussSeidel.cpp
-        src/GaussSeidel.h
-        src/types.h
-        src/Utils.cpp
-        src/Utils.h
-        src/BackwardSubstitution.cpp
-        src/BackwardSubstitution.h
+        src/LinearSystemSolver/GaussSeidel.cpp
+        src/LinearSystemSolver/GaussSeidel.h
+        src/LinearSystemSolver/types.h
+        src/LinearSystemSolver/Utils.cpp
+        src/LinearSystemSolver/Utils.h
+        src/LinearSystemSolver/BackwardSubstitution.cpp
+        src/LinearSystemSolver/BackwardSubstitution.h
         src/Jacobi.h
         src/Jacobi.cpp
-        src/GradientMethod.cpp
-        src/GradientMethod.h
-        "src/GradientConjugate.h"
+        src/LinearSystemSolver/GradientMethod.cpp
+        src/LinearSystemSolver/GradientMethod.h
+        src/GradientConjugate.h
         src/GradientConjugate.cpp
-        src/new/parent.cpp
-        src/new/parent.h
-        src/new/IterativeSolver.cpp
-        src/new/IterativeSolver.h)
+        src/LinearSystemSolver/IterativeSolver.cpp
+        src/LinearSystemSolver/IterativeSolver.h)
