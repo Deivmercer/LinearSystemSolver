@@ -5,7 +5,7 @@
 #ifndef METODI_DEL_CALCOLO_SCIENTIFICO_1_BIS_TYPES_H
 #define METODI_DEL_CALCOLO_SCIENTIFICO_1_BIS_TYPES_H
 
-#include "../libs/Eigen/SparseCore"
+#include "libs/Eigen/SparseCore"
 
 typedef Eigen::SparseMatrix<float, Eigen::RowMajor> Matrix;
 

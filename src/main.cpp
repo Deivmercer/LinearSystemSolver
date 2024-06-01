@@ -3,14 +3,14 @@
 #include "GradientConjugate.h"
 #include "Jacobi.h"
 #include "LinearSystemSolver/GradientMethod.h"
-#include "libs/unsupported/Eigen/SparseExtra"
+#include "LinearSystemSolver/libs/unsupported/Eigen/SparseExtra"
 #include "LinearSystemSolver/Utils.h"
 
 int main()
 {
     // Parsing the MatrixMarket file
     Matrix matrix;
-    Eigen::loadMarket(matrix, "../sample-mtx/spa1.mtx");
+    Eigen::loadMarket(matrix, "../sample-mtx/vem2.mtx");
     if(!Utils::checkSize(matrix))
     {
         throw std::invalid_argument("Matrix not valid");
