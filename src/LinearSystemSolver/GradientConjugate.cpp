@@ -15,6 +15,8 @@
     void GradientConjugate::getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk)
     {
         residual = b - (A * xk);
+        direction = residual;
+
         Eigen::VectorXf yk = A * direction;
         Eigen::VectorXf zk = A * residual;
         float ak = (direction.dot(residual)) / (direction.dot(yk));
@@ -23,4 +25,5 @@
         Eigen::VectorXf wk = A * residual;
         float bk = (direction.dot(wk)) / (direction.dot(yk));
         direction = residual - (bk * direction);
+
     }

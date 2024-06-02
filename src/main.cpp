@@ -35,29 +35,7 @@ int main()
     b = matrix * x;
 
 
-    GaussSeidel gs;
-    gs.solve(matrix, b, x0, demo.tolerance);
-    std::cout << "[GaussSeidel::solve] Iterations: " << gs.getIterations() << std::endl;
-    std::cout << "[GaussSeidel::solve] x: " << gs.getX().transpose() << std::endl;
-    std::cout << "[GaussSeidel::solve] residual: " << gs.getResidual().transpose() << std::endl << std::endl;
-    float gserror = Utils::euclideanNorm(gs.getX(), x) / Utils::euclideanNorm(x);
-    std::cout << "[GaussSeidel::solve] Relative error: " << gserror << std::endl << std::endl;
 
-    GradientMethod gm;
-    gm.solve(matrix, b, x0, demo.tolerance);
-    std::cout << "[GaussSeidel::solve] Iterations: " << gm.getIterations() << std::endl;
-    std::cout << "[GradientMethod::solve] x: " << gm.getX().transpose() << std::endl;
-    std::cout << "[GradientMethod::solve] residual: " << gm.getResidual().transpose() << std::endl << std::endl;
-    float gmerror = Utils::euclideanNorm(gm.getX(), x) / Utils::euclideanNorm(x);
-    std::cout << "[GradientMethod::solve] Relative error: " << gmerror << std::endl << std::endl;
-
-    Jacobi jm;
-    jm.solve(matrix, b, x0, demo.tolerance);
-    std::cout << "[Jacobi::solve] Iterations: " << jm.getIterations() << std::endl;
-    std::cout << "[Jacobi::solve] x: " << jm.getX().transpose() << std::endl;
-    std::cout << "[Jacobi::solve] residual: " << jm.getResidual().transpose() << std::endl << std::endl;
-    float jmerror = Utils::euclideanNorm(jm.getX(), x) / Utils::euclideanNorm(x);
-    std::cout << "[Jacobi::solve] Relative error: " << jmerror << std::endl << std::endl;
 
     GradientConjugate gc;
     gc.solve(matrix, b, x0, demo.tolerance);
