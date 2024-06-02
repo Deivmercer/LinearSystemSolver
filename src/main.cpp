@@ -1,9 +1,9 @@
 #include <iostream>
 #include "main.h"
 #include "LinearSystemSolver/GaussSeidel.h"
-#include "GradientConjugate.h"
-#include "Jacobi.h"
+#include "LinearSystemSolver/GradientConjugate.h"
 #include "LinearSystemSolver/GradientMethod.h"
+#include "LinearSystemSolver/Jacobi.h"
 #include "LinearSystemSolver/libs/unsupported/Eigen/SparseExtra"
 #include "LinearSystemSolver/Utils.h"
 
@@ -34,6 +34,7 @@ int main()
     Eigen::VectorXf b;
     b = matrix * x;
 
+
     GaussSeidel gs;
     gs.solve(matrix, b, x0, demo.tolerance);
     std::cout << "[GaussSeidel::solve] Iterations: " << gs.getIterations() << std::endl;
@@ -50,18 +51,21 @@ int main()
     float gmerror = Utils::euclideanNorm(gm.getX(), x) / Utils::euclideanNorm(x);
     std::cout << "[GradientMethod::solve] Relative error: " << gmerror << std::endl << std::endl;
 
-    Jacobi::Result rjm = Jacobi::solve(matrix, b, x0, demo.tolerance);
-    std::cout << "[JacobiMethod::solve] x: " << rjm.x.transpose() << std::endl;
-    std::cout << "[JacobitMethod::solve] residual: " << rjm.residual.transpose() << std::endl << std::endl;
-    float jmerror = Utils::euclideanNorm(rjm.x, x) / Utils::euclideanNorm(x);
-    std::cout << "[JacobiMethod::solve] Relative error: " << jmerror << std::endl << std::endl;
+    Jacobi jm;
+    jm.solve(matrix, b, x0, demo.tolerance);
+    std::cout << "[Jacobi::solve] Iterations: " << jm.getIterations() << std::endl;
+    std::cout << "[Jacobi::solve] x: " << jm.getX().transpose() << std::endl;
+    std::cout << "[Jacobi::solve] residual: " << jm.getResidual().transpose() << std::endl << std::endl;
+    float jmerror = Utils::euclideanNorm(jm.getX(), x) / Utils::euclideanNorm(x);
+    std::cout << "[Jacobi::solve] Relative error: " << jmerror << std::endl << std::endl;
 
-
-    GradientConjugate::Result rgc = GradientConjugate::solve(matrix, b, x0, demo.tolerance);
-    std::cout << "[GradientConjugate::solve] x: " << rgc.x.transpose() << std::endl;
-    std::cout << "[GradientConjugate::solve] direction: " << rgc.direction.transpose() << std::endl;
-    std::cout << "[GradientConjugate::solve] residual: " << rgc.residual.transpose() << std::endl << std::endl;
-    float gcerror = Utils::euclideanNorm(rjm.x, x) / Utils::euclideanNorm(x);
+    GradientConjugate gc;
+    gc.solve(matrix, b, x0, demo.tolerance);
+    std::cout << "[GradientConjugate::solve] Iterations: " << gc.getIterations() << std::endl;
+    std::cout << "[GradientConjugate::solve] x: " << gc.getX().transpose() << std::endl;
+    std::cout << "[GradientConjugate::solve] direction: " << gc.getDirection().transpose() << std::endl;
+    std::cout << "[GradientConjugate::solve] residual: " << gc.getResidual().transpose() << std::endl << std::endl;
+    float gcerror = Utils::euclideanNorm(gc.getX(), x) / Utils::euclideanNorm(x);
     std::cout << "[GradientConjugate::solve] Relative error: " << gcerror << std::endl << std::endl;
 
     return 0;

@@ -13,7 +13,7 @@ class IterativeSolver
 
     public:
         IterativeSolver();
-        const int MAX_ITERATIONS = 20000;
+        const int MAX_ITERATIONS = 1000;
         void solve(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, float tolerance);
         virtual void getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk) = 0;
         Eigen::VectorXf getX() const;
