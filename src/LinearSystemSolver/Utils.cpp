@@ -5,6 +5,7 @@
 #include "Utils.h"
 
 #include <iostream>
+#include <Eigen/Core>
 
 namespace Utils
 {

@@ -20,3 +20,7 @@ add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
         src/LinearSystemSolver/GradientConjugate.cpp
         src/LinearSystemSolver/IterativeSolver.cpp
         src/LinearSystemSolver/IterativeSolver.h)
+
+target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
+        src/LinearSystemSolver/libs
+)
