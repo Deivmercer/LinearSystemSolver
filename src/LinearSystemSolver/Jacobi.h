@@ -6,14 +6,14 @@
 
 class Jacobi : public IterativeSolver
 {
-    Eigen::VectorXf invP;
+    Matrix invP;
 
     void getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk) override;
 
 public:
     void solve(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, float tolerance)
     {
-        invP = Utils::invertDiagonal(A);
+        invP = Utils::invertDiagonal(A).asDiagonal();
         // Chiamare il metodo solve della superclasse
         IterativeSolver::solve(A, b, xk, tolerance);
     }
