@@ -26,3 +26,9 @@ void GaussSeidel::getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eig
     Eigen::VectorXf y = BackwardSubstitution::solve(P, residual);
     x = xk + y;
 }
+
+bool GaussSeidel::checkConvergence(const Matrix& A)
+{
+    // TODO: stub
+    return false;
+}

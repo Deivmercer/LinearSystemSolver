@@ -1,8 +1,6 @@
 #ifndef GRADIENTCONJUGATE_H
 #define GRADIENTCONJUGATE_H
 
-#include <iostream>
-
 #include "IterativeSolver.h"
 #include "Utils.h"
 
@@ -18,6 +16,8 @@ public:
     {
         return direction;
     }
+
+    bool checkConvergence(const Matrix& A) override;
 };
 
 #endif //GRADIENTCONJUGATE_H

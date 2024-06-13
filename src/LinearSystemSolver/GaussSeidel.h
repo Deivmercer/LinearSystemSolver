@@ -15,6 +15,9 @@ class GaussSeidel : public IterativeSolver
     Matrix getUpperMatrix(const Matrix& matrix);
 
     void getNextXk(const Matrix &A, const Eigen::VectorXf &b, const Eigen::VectorXf &xk) override;
+
+    public:
+        bool checkConvergence(const Matrix& A) override;
 };
 
 #endif //GAUSS_SEIDEL_GAUSSSEIDEL_H

@@ -37,6 +37,10 @@ int main()
     b = matrix * x;
 
     Jacobi jm;
+#ifndef NDEBUG
+    if (!jm.checkConvergence(matrix))
+        std::cout << "[Jacobi] Warning: convergence test failed" << std::endl;
+#endif
     start = std::chrono::steady_clock::now();
     jm.solve(matrix, b, x0, demo.tolerance);
     end = std::chrono::steady_clock::now();
@@ -48,6 +52,10 @@ int main()
     std::cout << "[Jacobi] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl << std::endl;
 
     GaussSeidel gs;
+#ifndef NDEBUG
+    if (!gs.checkConvergence(matrix))
+        std::cout << "[GaussSeidel] Warning: convergence test failed" << std::endl;
+#endif
     start = std::chrono::steady_clock::now();
     gs.solve(matrix, b, x0, demo.tolerance);
     end = std::chrono::steady_clock::now();
@@ -59,6 +67,10 @@ int main()
     std::cout << "[GaussSeidel] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl << std::endl;
 
     GradientMethod gm;
+#ifndef NDEBUG
+    if (!gm.checkConvergence(matrix))
+        std::cout << "[GradientMethod] Warning: convergence test failed" << std::endl;
+#endif
     start = std::chrono::steady_clock::now();
     gm.solve(matrix, b, x0, demo.tolerance);
     end = std::chrono::steady_clock::now();
@@ -70,6 +82,10 @@ int main()
     std::cout << "[GradientMethod] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl << std::endl;
 
     GradientConjugate gc;
+#ifndef NDEBUG
+    if (!gc.checkConvergence(matrix))
+        std::cout << "[GradientConjugate] Warning: convergence test failed" << std::endl;
+#endif
     start = std::chrono::steady_clock::now();
     gc.solve(matrix, b, x0, demo.tolerance);
     end = std::chrono::steady_clock::now();

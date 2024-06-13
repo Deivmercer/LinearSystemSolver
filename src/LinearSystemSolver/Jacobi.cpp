@@ -9,3 +9,8 @@ void Jacobi::getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eigen::V
     x = x + rk;
 }
 
+bool Jacobi::checkConvergence(const Matrix& A)
+{
+    // TODO: stub
+    return false;
+}

@@ -22,6 +22,10 @@ namespace Utils
     float euclideanNorm(const Eigen::VectorXf& x);
 
     float euclideanNorm(const Eigen::VectorXf& x, const Eigen::VectorXf& y);
+
+    bool isSymmetric(const Matrix& A);
+
+    bool isPositiveDefinite(const Matrix& A);
 }
 
 #endif //METODI_DEL_CALCOLO_SCIENTIFICO_1_BIS_UTILS_H

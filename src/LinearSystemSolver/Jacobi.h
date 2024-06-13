@@ -17,6 +17,8 @@ public:
         // Chiamare il metodo solve della superclasse
         IterativeSolver::solve(A, b, xk, tolerance);
     }
+
+    bool checkConvergence(const Matrix& A) override;
 };
 
 #endif //JACOBI_H

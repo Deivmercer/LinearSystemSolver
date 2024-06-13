@@ -19,7 +19,7 @@ class IterativeSolver
         Eigen::VectorXf getX() const;
         Eigen::VectorXf getResidual() const;
         int getIterations() const;
-
+        virtual bool checkConvergence(const Matrix& A) = 0;
 };
 
 #endif //ITERATIVESOLVER_H
