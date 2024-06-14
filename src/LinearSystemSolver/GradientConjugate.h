@@ -14,7 +14,8 @@ public:
     void solve(const Matrix& A, const Eigen::VectorXf& b, const Eigen::VectorXf& xk, float tolerance)
     {
         //INIT residual and direction
-        //r^(0) = b − Ax^(0) e d^(0) = r^(0)
+        //r^(0) = b − Ax^(0)
+        //d^(0) = r^(0)
         residual = b - (A * xk);
         direction = residual;
 
