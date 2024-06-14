@@ -4,6 +4,7 @@
 
 #include "GaussSeidel.h"
 #include "BackwardSubstitution.h"
+#include "Utils.h"
 
 Matrix GaussSeidel::getLowerMatrix(const Matrix& matrix)
 {
@@ -29,6 +30,5 @@ void GaussSeidel::getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eig
 
 bool GaussSeidel::checkConvergence(const Matrix& A)
 {
-    // TODO: stub
-    return false;
+    return Utils::isStrictlyDiagonallyDominant(A);
 }

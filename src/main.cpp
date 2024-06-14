@@ -1,5 +1,8 @@
 #include <iostream>
 #include "main.h"
+
+#include <chrono>
+
 #include "LinearSystemSolver/GaussSeidel.h"
 #include "LinearSystemSolver/GradientConjugate.h"
 #include "LinearSystemSolver/GradientMethod.h"
@@ -7,17 +10,15 @@
 #include "LinearSystemSolver/libs/unsupported/Eigen/SparseExtra"
 #include "LinearSystemSolver/Utils.h"
 
-int main()
-{
-    DemoMatrix demo = DEMO_MATRICES[0];
+int main() {
+    DemoMatrix demo = DEMO_MATRICES[3];
     std::chrono::time_point<std::chrono::steady_clock> start;
     std::chrono::time_point<std::chrono::steady_clock> end;
 
     // Parsing the MatrixMarket file
     Matrix matrix;
     Eigen::loadMarket(matrix, demo.path());
-    if(!Utils::checkSize(matrix))
-    {
+    if (!Utils::checkSize(matrix)) {
         throw std::invalid_argument("Matrix not valid");
     }
 
@@ -49,7 +50,8 @@ int main()
     std::cout << "[Jacobi] residual: " << jm.getResidual().transpose() << std::endl;
     float jmerror = Utils::euclideanNorm(jm.getX(), x) / Utils::euclideanNorm(x);
     std::cout << "[Jacobi] Relative error: " << jmerror << std::endl;
-    std::cout << "[Jacobi] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl << std::endl;
+    std::cout << "[Jacobi] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms"
+            << std::endl << std::endl;
 
     GaussSeidel gs;
 #ifndef NDEBUG
@@ -64,7 +66,8 @@ int main()
     std::cout << "[GaussSeidel] residual: " << gs.getResidual().transpose() << std::endl;
     float gserror = Utils::euclideanNorm(gs.getX(), x) / Utils::euclideanNorm(x);
     std::cout << "[GaussSeidel] Relative error: " << gserror << std::endl;
-    std::cout << "[GaussSeidel] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl << std::endl;
+    std::cout << "[GaussSeidel] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() <<
+            " ms" << std::endl << std::endl;
 
     GradientMethod gm;
 #ifndef NDEBUG
@@ -79,7 +82,8 @@ int main()
     std::cout << "[GradientMethod] residual: " << gm.getResidual().transpose() << std::endl;
     float gmerror = Utils::euclideanNorm(gm.getX(), x) / Utils::euclideanNorm(x);
     std::cout << "[GradientMethod] Relative error: " << gmerror << std::endl;
-    std::cout << "[GradientMethod] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl << std::endl;
+    std::cout << "[GradientMethod] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count()
+            << " ms" << std::endl << std::endl;
 
     GradientConjugate gc;
 #ifndef NDEBUG
@@ -95,7 +99,8 @@ int main()
     std::cout << "[GradientConjugate] residual: " << gc.getResidual().transpose() << std::endl;
     float gcerror = Utils::euclideanNorm(gc.getX(), x) / Utils::euclideanNorm(x);
     std::cout << "[GradientConjugate] Relative error: " << gcerror << std::endl;
-    std::cout << "[GradientConjugate] Execution time: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl << std::endl;
+    std::cout << "[GradientConjugate] Execution time: " << std::chrono::duration<double, std::milli>(end - start).
+            count() << " ms" << std::endl << std::endl;
 
     return 0;
 }
