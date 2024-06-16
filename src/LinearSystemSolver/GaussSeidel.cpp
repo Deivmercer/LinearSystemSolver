@@ -3,7 +3,7 @@
 //
 
 #include "GaussSeidel.h"
-#include "BackwardSubstitution.h"
+#include "ForwardSubstitution.h"
 #include "Utils.h"
 
 Matrix GaussSeidel::getLowerMatrix(const Matrix& matrix)
@@ -24,7 +24,7 @@ void GaussSeidel::getNextXk(const Matrix& A, const Eigen::VectorXf& b, const Eig
     Matrix P = GaussSeidel::getLowerMatrix(A);
 
     residual = b - (A * xk);
-    Eigen::VectorXf y = BackwardSubstitution::solve(P, residual);
+    Eigen::VectorXf y = ForwardSubstitution::solve(P, residual);
     x = xk + y;
 }
 

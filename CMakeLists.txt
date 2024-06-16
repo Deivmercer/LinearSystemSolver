@@ -10,8 +10,8 @@ add_executable(Metodi_del_Calcolo_Scientifico_1_bis src/main.cpp
         src/LinearSystemSolver/types.h
         src/LinearSystemSolver/Utils.cpp
         src/LinearSystemSolver/Utils.h
-        src/LinearSystemSolver/BackwardSubstitution.cpp
-        src/LinearSystemSolver/BackwardSubstitution.h
+        src/LinearSystemSolver/ForwardSubstitution.cpp
+        src/LinearSystemSolver/ForwardSubstitution.h
         src/LinearSystemSolver/Jacobi.h
         src/LinearSystemSolver/Jacobi.cpp
         src/LinearSystemSolver/GradientMethod.cpp
